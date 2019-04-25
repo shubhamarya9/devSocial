@@ -11,9 +11,10 @@ const posts = require("./routes/api/posts");
 const db = require("./config/keys.js").mongoURI;
 //connect mongoDB
 mongoose
-  .connect(db)
-  .then(() => console.log("DB Connected"))
+  .connect(db, { useNewUrlParser: true })
+  .then(console.log("DB Connected"))
   .catch(err => console.log(err));
+mongoose.Promise = global.Promise;
 
 //use routes
 
